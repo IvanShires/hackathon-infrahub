@@ -1,0 +1,19 @@
+---
+jinja2_transforms:
+  - name: interface_config_transform           # Unique name for your transform
+    description: "interface_config_transform"    # (optional)
+    query: "interface_config_query"              # Name or ID of the GraphQLQuery
+    template_path: "interface_config.j2"         # Path to the main Jinja2 template
+
+queries:
+  - name: interface_config_query                 # Name of the GraphQLQuery
+    file_path: "interface_config.gql"   
+
+artifact_definitions:
+  - name: "device_configuration"
+    artifact_name: "Device configuration file"
+    parameters:
+      name: "name__value"
+    content_type: "text/plain"
+    targets: "DeviceGroup"
+    transformation: "device_config_transform" # Path to the main Jinja2 template
