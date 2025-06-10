@@ -10,7 +10,7 @@ queries:
     file_path: "interface_config.gql"   
 
 artifact_definitions:
-  - artifact_name: "device_configuration"
+  - name: "device_configuration"
     artifact_name: "Device configuration file"
     parameters:
       name: "name__value"
