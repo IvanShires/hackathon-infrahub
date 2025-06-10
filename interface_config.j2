@@ -1,0 +1,15 @@
+{% for intf in data.InfraInterfaceL2L3.edges %}
+{% if intf.node.ip_addresses.edges|length > 0  %}
+interface {{ intf.node.name.value }}
+{% if intf.node.name.value != "Loopback0" %}
+  no switchport
+{% endif %}
+{% for addr in intf.node.ip_addresses.edges  %}
+{% if addr.node.address.value|ipaddress_interface("version") == 4 %}
+  ip address {{ addr.node.address.value }}
+{% elif addr.node.address.value|ipaddress_interface("version") == 6 %}
+  ipv6 address {{ addr.node.address.value }}
+{% endif %}{% endfor %}
+!
+{% endif %}
+{% endfor %}
